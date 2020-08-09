@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JSX练习</title>
+</head>
+<body>
+  <div id="example"></div>
+  
+  <!--
+      一定注意区分：【js语句】 与 【js表达式】:
+        1.表达式：一个表达式会产生一个值,它可以放在任何需要一个值的地方
+          举例：a
+               3 + b
+               demo("a", "b")
+               arr.map()
+							 function foo() {}
+               .....
+        2.语句：语句可以理解成一个行为，循环语句、if语句，都是典型的语句
+          举例：
+               if(){}
+               for(){}
+               ......
+  -->
+
+	<!--react的核心库-->
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<!--react的扩展库，专门用于操作DOM-->
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<!--引入babel，用于解析jsx语法为原生js语法-->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+
+	<script type="text/babel">
+
+	const arr = ['jQuery','Angular','react','vue'] //数据的数组，后期会通过axios请求服务器拿到
+	//const arr = [<li>jQuery</li>,<li>Angular</li>,<li>react</li>,<li>vue</li>] //虚拟DOM组成的数组
+
+	//1.创建虚拟DOM
+	const VDOM = (
+								<div>
+									<h1>前端js框架列表</h1>
+									<ul>
+										{/*要把数据的数组加工成标签数组(加工数组)*/}
+										{arr.map((name,index) => <li key={index}>{name}</li>)}
+									</ul>
+								</div>
+							)
+	//2.渲染虚拟DOM
+	ReactDOM.render(VDOM,document.getElementById('example'))
+	
+	</script>
+	
+</body>
+</html>
